@@ -1,10 +1,18 @@
 import sys
-for i in range(1, 6):
-    sys.stdin = open(f'in{i}.txt', 'rt')
-    T = int(input())
-    for j in range(T):
-        N, s, e, k = map(int, input().split())
-        nums = list(map(int, input().split()))
-        part = sorted(nums[s-1:e])
-        print(f'#{j+1} {part[k-1]}')
-    print('---------------')
+sys.stdin = open('in5.txt', 'rt')
+N, K = map(int, input().split())
+
+yak = []
+
+for i in range(1, N // 2):
+    if not N % i:
+        yak.append(i)
+        if i != round(N/i):
+            yak.append(round(N/i))
+
+yak = list(set(yak))
+yak.sort()
+if len(yak) >= K:
+    print(yak[K-1])
+else:
+    print(-1)
