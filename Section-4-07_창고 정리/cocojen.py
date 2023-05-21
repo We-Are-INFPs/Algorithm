@@ -1,0 +1,11 @@
+l = int(input())
+heights = list(map(int, input().split()))
+m = int(input())
+
+heights.sort()
+for _ in range(m):
+    heights[0] += 1
+    heights[-1] -= 1
+    heights.sort()
+
+print(heights[-1] - heights[0])
